@@ -13,10 +13,37 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="300,0,0,181" VerticalAlignment="Bottom" Width="75" Click="Button_Click"/>
-        <TextBox HorizontalAlignment="Left" Height="22" Margin="197,122,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="Manual" ResizeMode="NoResize" WindowStyle="None">
+    <Grid Background="#74250e">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50 "/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid Background="#140c12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
 
+            </Grid.RowDefinitions>
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50" HorizontalAlignment="Right" Margin="0,0,-0.4,0.4" d:LayoutOverrides="Width" Click="Button_Click_2">
+                <materialDesign:PackIcon Kind="Home" />
+            </Button>
+            <Button Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50">
+                <materialDesign:PackIcon Kind="Magnify"/>
+            </Button>
+            <Button Grid.Row="3" VerticalAlignment="Bottom"  Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50">
+                <materialDesign:PackIcon Kind="Information"/>
+            </Button>
+            <Button Grid.Row="4" Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50" Click="Button_Click_1">
+                <materialDesign:PackIcon Kind="Power"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="1">
+            <local:opening x:Name="openpage" Margin="0,0,0.4,-0.4"/>
+            <Button x:Name="btn" Content="Найти событие" FontFamily="Comic Sans MS" Margin="300, 350, 300, 50" Height="50" BorderBrush="#a55248" Background="#a55248" Click="Button_Click" />
+        </Grid>
     </Grid>
 </Window>

@@ -13,3 +13,15 @@ C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 К
 C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.csproj.CoreCompileInputs.cache
 C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.exe
 C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.pdb
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\GMap.NET.Core.dll
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\GMap.NET.WindowsPresentation.dll
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\MaterialDesignColors.dll
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\MaterialDesignColors.pdb
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\App.baml
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.csproj.CopyComplete
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\opening.g.cs
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\opening.baml
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\GeneratedInternalTypeHelper.g.cs

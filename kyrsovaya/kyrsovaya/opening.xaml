@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="kyrsovaya.opening"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:kyrsovaya"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Image Source="/img/mainpic.jpg" Margin="30, 30, 300, 150"/>
+        <Image Source="/img/mainpic1.png" Margin="510,30,45.4,284.6" />
+        <Image Source="/img/mainpic2.jpg" Margin="510,170,45.4,149.6" />
+    </Grid>
+</UserControl>
