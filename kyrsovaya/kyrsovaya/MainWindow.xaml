@@ -31,7 +31,7 @@
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50" HorizontalAlignment="Right" Margin="0,0,-0.4,0.4" d:LayoutOverrides="Width" Click="Button_Click_2">
                 <materialDesign:PackIcon Kind="Home" />
             </Button>
-            <Button Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50">
+            <Button Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50" Click="Button_Click_3">
                 <materialDesign:PackIcon Kind="Magnify"/>
             </Button>
             <Button Grid.Row="3" VerticalAlignment="Bottom"  Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50">
@@ -45,5 +45,6 @@
             <local:opening x:Name="openpage" Margin="0,0,0.4,-0.4"/>
             <Button x:Name="btn" Content="Найти событие" FontFamily="Comic Sans MS" Margin="300, 350, 300, 50" Height="50" BorderBrush="#a55248" Background="#a55248" Click="Button_Click" />
         </Grid>
+        <local:SecondPage x:Name="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="750" Grid.Column="1" Margin="760,0,-760,0"/>
     </Grid>
 </Window>

@@ -1,0 +1,15 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:kyrsovaya"
+             xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" x:Class="kyrsovaya.SecondPage"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="750">
+    <Grid>
+        <WindowsPresentation:GMapControl HorizontalAlignment="Left" Height="430" Margin="10,10,0,0" VerticalAlignment="Top" Width="557"/>
+        <TextBox x:Name="Search" HorizontalAlignment="Left" Height="38" Margin="590,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20"/> 
+        <ListBox HorizontalAlignment="Left" Height="368" Margin="590,72,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderBrush="{x:Null}"/>
+    </Grid>
+</UserControl>

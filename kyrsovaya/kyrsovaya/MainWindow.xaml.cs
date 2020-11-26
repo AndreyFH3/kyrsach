@@ -39,12 +39,21 @@ namespace kyrsovaya
         {
             btn.Margin = new Thickness(1000,0,0,0);
             openpage.Margin = new Thickness(1000,0,0,0);
+            Search.Margin = new Thickness(0, 0, 0, 0);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             btn.Margin = new Thickness(300, 350, 300, 50);
             openpage.Margin = new Thickness(0, 0, 0, 0);
+            Search.Margin = new Thickness(1000, 0, 0, 0);
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            btn.Margin = new Thickness(1000, 0, 0, 0);
+            openpage.Margin = new Thickness(1000, 0, 0, 0);
+            Search.Margin = new Thickness(0, 0, 0, 0);
         }
     }
 }
