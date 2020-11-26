@@ -1,0 +1,15 @@
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\kyrsovaya.exe.config
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\kyrsovaya.exe
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\kyrsovaya.pdb
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.csprojAssemblyReference.cache
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\MainWindow.g.cs
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\App.g.cs
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya_MarkupCompile.cache
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya_MarkupCompile.lref
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\MainWindow.baml
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.g.resources
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.Properties.Resources.resources
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.csproj.GenerateResource.cache
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.csproj.CoreCompileInputs.cache
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.exe
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.pdb
