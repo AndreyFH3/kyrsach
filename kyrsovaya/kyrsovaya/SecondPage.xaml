@@ -8,8 +8,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="750">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <WindowsPresentation:GMapControl HorizontalAlignment="Left" Height="430" Margin="10,10,0,0" VerticalAlignment="Top" Width="557"/>
-        <TextBox x:Name="Search" HorizontalAlignment="Left" Height="38" Margin="590,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20"/> 
-        <ListBox HorizontalAlignment="Left" Height="368" Margin="590,72,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="Search" HorizontalAlignment="Left" Height="38" Margin="590,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" Grid.ColumnSpan="2"/>
+        <ListBox HorizontalAlignment="Left" Height="368" Margin="590,72,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>

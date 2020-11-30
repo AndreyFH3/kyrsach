@@ -54,3 +54,5 @@ C:\Users\User\Desktop\Всякое разное\Сторонние прилож�
 C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.csproj.GenerateResource.cache
 C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.csproj.CopyComplete
+C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\ThirdPage.g.cs
+C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\ThirdPage.baml

@@ -34,7 +34,7 @@
             <Button Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50" Click="Button_Click_3">
                 <materialDesign:PackIcon Kind="Magnify"/>
             </Button>
-            <Button Grid.Row="3" VerticalAlignment="Bottom"  Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50">
+            <Button Grid.Row="3" VerticalAlignment="Bottom"  Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50" Click="Button_Click_4">
                 <materialDesign:PackIcon Kind="Information"/>
             </Button>
             <Button Grid.Row="4" Background="{x:Null}" BorderBrush="{x:Null}" Width="50" Height="50" Click="Button_Click_1">
@@ -46,5 +46,6 @@
             <Button x:Name="btn" Content="Найти событие" FontFamily="Comic Sans MS" Margin="300, 350, 300, 50" Height="50" BorderBrush="#a55248" Background="#a55248" Click="Button_Click" />
         </Grid>
         <local:SecondPage x:Name="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="750" Grid.Column="1" Margin="760,0,-760,0"/>
+        <local:ThirdPage x:Name="Information" HorizontalAlignment="Left" Margin="0,455,0,-460" VerticalAlignment="Top" Height="455" Width="750" Grid.Column="1"/>
     </Grid>
 </Window>
