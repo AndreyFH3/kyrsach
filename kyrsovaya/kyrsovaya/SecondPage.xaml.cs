@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsPresentation;
+using System.Device.Location;
+
 namespace kyrsovaya
 {
     /// <summary>
@@ -22,6 +28,13 @@ namespace kyrsovaya
         public SecondPage()
         {
             InitializeComponent();
+        }
+
+        bit ch = new bit();
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ch.LoadEventInfo();
         }
     }
 }

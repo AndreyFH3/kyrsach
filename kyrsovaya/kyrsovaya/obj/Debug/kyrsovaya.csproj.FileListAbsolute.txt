@@ -56,3 +56,11 @@ C:\Users\User\Desktop\Всякое разное\Сторонние прилож�
 C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\kyrsovaya.csproj.CopyComplete
 C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\ThirdPage.g.cs
 C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\ThirdPage.baml
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\RestSharp.dll
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\RestSharp.xml
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\SecondPage.g.cs
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\ThirdPage.g.cs
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\SecondPage.baml
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\ThirdPage.baml
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\Newtonsoft.Json.dll
+C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\Newtonsoft.Json.xml
