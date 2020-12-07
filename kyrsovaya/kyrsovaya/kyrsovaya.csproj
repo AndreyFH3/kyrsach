@@ -79,6 +79,7 @@
     </ApplicationDefinition>
     <Compile Include="Artist.cs" />
     <Compile Include="bit.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="EventInfo.cs" />
     <Compile Include="JsonParser.cs" />
     <Compile Include="Offer.cs" />

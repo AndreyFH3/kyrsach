@@ -9,7 +9,7 @@ using Newtonsoft.Json.Converters;
 
 namespace kyrsovaya
 {
-    class Options
+    public partial class Options
     {
         [JsonProperty("display_listen_unit")]
         public bool DisplayListenUnit { get; set; }

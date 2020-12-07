@@ -13,7 +13,7 @@ namespace kyrsovaya
     {
         [JsonProperty("id")]
         //[JsonConverter(typeof(ParseStringConverter))]
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -22,7 +22,7 @@ namespace kyrsovaya
         public Uri Url { get; set; }
 
         [JsonProperty("mbid")]
-        public Guid Mbid { get; set; }
+        public string Mbid { get; set; }
 
         [JsonProperty("options")]
         public Options Options { get; set; }

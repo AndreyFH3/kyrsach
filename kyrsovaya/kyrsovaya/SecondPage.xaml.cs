@@ -34,7 +34,7 @@ namespace kyrsovaya
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ch.LoadEventInfo();
+            ch.LoadEventInfo(Search.Text);
         }
     }
 }

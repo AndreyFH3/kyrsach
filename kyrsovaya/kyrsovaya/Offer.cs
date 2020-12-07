@@ -9,7 +9,7 @@ using Newtonsoft.Json.Converters;
 
 namespace kyrsovaya
 {
-    class Offer
+    public partial class Offer
     {
         [JsonProperty("type")]
         public string Type { get; set; }

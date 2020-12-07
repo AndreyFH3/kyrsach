@@ -64,3 +64,7 @@ C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 К
 C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\obj\Debug\ThirdPage.baml
 C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\Newtonsoft.Json.dll
 C:\Users\dusha\YandexDisk\Studi\Программирование\2 курс\0 КУРСАЧ\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\Newtonsoft.Json.xml
+C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\RestSharp.dll
+C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\Newtonsoft.Json.xml
+C:\Users\User\Desktop\Всякое разное\Сторонние приложения\Программмист\Kyrsach\kyrsach\kyrsovaya\kyrsovaya\bin\Debug\RestSharp.xml

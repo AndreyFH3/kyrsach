@@ -9,7 +9,7 @@ using Newtonsoft.Json.Converters;
 
 namespace kyrsovaya
 {
-    class Venue
+    public partial class Venue
     {
         [JsonProperty("country")]
         public string Country { get; set; }
@@ -17,7 +17,7 @@ namespace kyrsovaya
         [JsonProperty("city")]
         public string City { get; set; }
 
-        [JsonProperty("timezone")]
+        [JsonProperty("timezone", NullValueHandling = NullValueHandling.Ignore)]
         public string Timezone { get; set; }
 
         [JsonProperty("name")]
@@ -31,5 +31,11 @@ namespace kyrsovaya
 
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        [JsonProperty("latitude", NullValueHandling = NullValueHandling.Ignore)]
+        public string Latitude { get; set; }
+
+        [JsonProperty("longitude", NullValueHandling = NullValueHandling.Ignore)]
+        public string Longitude { get; set; }
     }
 }

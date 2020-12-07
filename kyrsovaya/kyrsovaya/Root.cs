@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace kyrsovaya
 {
@@ -27,7 +25,7 @@ namespace kyrsovaya
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("artist")]
+        [JsonProperty("artist", NullValueHandling = NullValueHandling.Ignore)]
         public Artist Artist { get; set; }
 
         [JsonProperty("venue")]
@@ -41,7 +39,7 @@ namespace kyrsovaya
 
         [JsonProperty("artist_id")]
         //[JsonConverter(typeof(ParseStringConverter))]
-        public string ArtistId { get; set; }
+        public long ArtistId { get; set; }
 
         [JsonProperty("on_sale_datetime")]
         public string OnSaleDatetime { get; set; }
