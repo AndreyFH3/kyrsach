@@ -82,6 +82,7 @@
     <Compile Include="Data.cs" />
     <Compile Include="EventInfo.cs" />
     <Compile Include="JsonParser.cs" />
+    <Compile Include="JSParse.cs" />
     <Compile Include="Offer.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Root.cs" />

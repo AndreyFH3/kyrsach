@@ -12,13 +12,22 @@ namespace kyrsovaya
 {
     class EventInfo
     {
-        public DateTime EventTinme { get; set; }
+        public string Mbid { get; set; }
 
-        public PointLatLng EventPlace { get; set; }
+        public string SupportUrl { get; set; }
 
-        public string EventName { get; set; }
+        public Uri FacebookPageUrl { get; set; }
 
-        public string EventInform {get; set;}
+        public Uri ImageUrl { get; set; }
 
+        public string Name { get; set; }
+
+        public Options Options { get; set; }
+
+        public long TrackerCount { get; set; }
+
+        public long UpcomingEventCount { get; set; }
+
+        public Uri Url { get; set; }
     }
 }
