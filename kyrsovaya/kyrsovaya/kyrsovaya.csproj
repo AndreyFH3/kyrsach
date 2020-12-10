@@ -77,23 +77,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Artist.cs" />
     <Compile Include="bit.cs" />
-    <Compile Include="Data.cs" />
-    <Compile Include="EventInfo.cs" />
-    <Compile Include="JsonParser.cs" />
+    <Compile Include="JSClasses.cs" />
     <Compile Include="JSParse.cs" />
-    <Compile Include="Offer.cs" />
-    <Compile Include="Options.cs" />
-    <Compile Include="Root.cs" />
     <Compile Include="SecondPage.xaml.cs">
       <DependentUpon>SecondPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ThirdPage.xaml.cs">
       <DependentUpon>ThirdPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Venue.cs" />
-    <Compile Include="XmlParser.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

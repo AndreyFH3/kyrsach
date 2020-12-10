@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,14 @@ namespace kyrsovaya
 {
     class JSParse
     {
-        public List<EventInfo> parseJSdata (string name)
+        public List<Root> parseJSdata (string art)
         {
-            return new List<EventInfo>();
+            List<Root> inf = JsonConvert.DeserializeObject<List<Root>>(art);
+            return new List<Root>();
         }
+
+        //public abstract void to"parseJSdata"();
+
+        //public abstract void должен будет передавать значения к нам кароч да, што
     }
 }
