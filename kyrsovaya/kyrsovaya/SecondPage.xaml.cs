@@ -23,6 +23,7 @@ namespace kyrsovaya
     /// <summary>
     /// Логика взаимодействия для SecondPage.xaml
     /// </summary>
+    
     public partial class SecondPage : UserControl
     {
         public SecondPage()
@@ -30,6 +31,7 @@ namespace kyrsovaya
             InitializeComponent();
         }
         List<Root> infoarr = new List<Root>();
+        GMapMarker marker;
 
         private void MapLoaded(object sender, RoutedEventArgs e)
         {
@@ -52,15 +54,32 @@ namespace kyrsovaya
         {
             infoarr = ch.LoadEventInfo(Search.Text);
 
-            foreach (object element in infoarr)
+            Map.Markers.Clear();
+
+            float lat;
+            float lng;
+
+            for (int i = 1; i < infoarr.Count();i++) 
             {
-                double lat;
-                double lng;
-                lat = (Convert.ToDouble(infoarr[0].Venue.Latitude));
-                lng = (Convert.ToDouble(infoarr[0].Venue.Longitude));
-                PointLatLng EventLocation = new PointLatLng(0,0);
+                lat = float.Parse((infoarr[i].Venue.Latitude).Replace(".", ","));
+                lng = float.Parse((infoarr[i].Venue.Longitude).Replace(".", ","));
+   
+                PointLatLng EventLocation = new PointLatLng(lat, lng);
+                marker = new GMapMarker(EventLocation)
+                {
+
+                    Shape = new Image
+                    {
+                        Width = 32,
+                        Height = 32,
+                        //ToolTip = title,
+                        Source = new BitmapImage(new Uri("pack://application:,,,/imag/metka.png"))
+                    }
+
+                };
+                Map.Markers.Add(marker);
             }
-           
+
         }
     }
 }
