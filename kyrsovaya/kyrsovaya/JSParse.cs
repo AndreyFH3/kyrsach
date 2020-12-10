@@ -12,7 +12,7 @@ namespace kyrsovaya
         public List<Root> parseJSdata (string art)
         {
             List<Root> inf = JsonConvert.DeserializeObject<List<Root>>(art);
-            return new List<Root>();
+            return inf;
         }
 
         //public abstract void to"parseJSdata"();

@@ -30,6 +30,5 @@ namespace kyrsovaya
             string data = response.Content;
             return jsp.parseJSdata(data);
         }
-       
     }
 }

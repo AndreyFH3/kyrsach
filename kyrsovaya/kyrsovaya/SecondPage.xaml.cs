@@ -29,23 +29,18 @@ namespace kyrsovaya
         {
             InitializeComponent();
         }
+        List<Root> infoarr = new List<Root>();
 
         private void MapLoaded(object sender, RoutedEventArgs e)
         {
-            // настройка доступа к данным
             GMaps.Instance.Mode = AccessMode.ServerAndCache;
 
-            // установка провайдера карт
             Map.MapProvider = YandexMapProvider.Instance;
 
-            // установка зума карты
             Map.MinZoom = 2;
             Map.MaxZoom = 17;
             Map.Zoom = 15;
-            // установка фокуса карты
             Map.Position = new PointLatLng(55.012823, 82.950359);
-
-            // настройка взаимодействия с картой
             Map.MouseWheelZoomType = MouseWheelZoomType.MousePositionAndCenter;
             Map.CanDragMap = true;
             Map.DragButton = MouseButton.Left;
@@ -55,7 +50,17 @@ namespace kyrsovaya
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ch.LoadEventInfo(Search.Text);
+            infoarr = ch.LoadEventInfo(Search.Text);
+
+            foreach (object element in infoarr)
+            {
+                double lat;
+                double lng;
+                lat = (Convert.ToDouble(infoarr[0].Venue.Latitude));
+                lng = (Convert.ToDouble(infoarr[0].Venue.Longitude));
+                PointLatLng EventLocation = new PointLatLng(0,0);
+            }
+           
         }
     }
 }
