@@ -22,12 +22,20 @@ namespace kyrsovaya
 {    
     public partial class SecondPage : UserControl
     {
+        public string[] names { get; set; }
         public SecondPage()
         {
             InitializeComponent();
+
+            names = new string[] {"United States","Estonia", "Germany", "Czechia", "United Kingdom", "Australia"};
+
+            DataContext = this;
         }
         List<Root> infoarr = new List<Root>();
+        List<string> ArtistList = new List<string>()  { "Grandson", "Gorilazz", "Scorpions", "Би 2", "Justin Bieber", "Death Angel", "Tech N9ne", "Wiz Khalifa", "G-Eazy", "Diplo", "Major Lazer", "Jojo", "Avatar", "Lauv", "Black Pink", "Popa Chubby", "Primus", "Kb", "Default", "Tennis", "Emery", "CKY"};
         GMapMarker marker;
+        float lat;
+        float lng;
 
         private void MapLoaded(object sender, RoutedEventArgs e)
         {
@@ -37,7 +45,7 @@ namespace kyrsovaya
 
             Map.MinZoom = 2;
             Map.MaxZoom = 17;
-            Map.Zoom = 15;
+            Map.Zoom = 1;
             Map.Position = new PointLatLng(55.012823, 82.950359);
             Map.MouseWheelZoomType = MouseWheelZoomType.MousePositionAndCenter;
             Map.CanDragMap = true;
@@ -52,13 +60,8 @@ namespace kyrsovaya
 
             Map.Markers.Clear();
 
-            float lat;
-            float lng;
-
             for (int i = 0; i < infoarr.Count();i++) 
             {
-                //string str1 = infoarr[i].Venue.Latitude;
-                //string str2 = infoarr[i].Venue.Longitude;
                 if (infoarr[i].Venue.Latitude==null)
                     lat = 0;
                 else
@@ -70,8 +73,7 @@ namespace kyrsovaya
 
                 string markerinfo = infoarr[i].Lineup[0] + "\n" + infoarr[i].Description + "\n" + infoarr[i].Title + "\n" + infoarr[i].datetime;
                 AddMarker(lat, lng, markerinfo);
-            }
-
+             }
         }
         void AddMarker(float lat, float lng, string tooltip)
         {
@@ -87,6 +89,40 @@ namespace kyrsovaya
                 }
             };
             Map.Markers.Add(marker);
+        }
+        
+        void CityChose(string city, List<Root> list)
+        {
+            for (int i  = 0; i < list.Count(); i++)
+                if (list[i].Venue.Country == city)
+                {
+                    for (int j = 0; j < infoarr.Count(); j++)
+                    {
+                        if (infoarr[i].Venue.Latitude == null)
+                            lat = 0;
+                        else
+                            lat = float.Parse(infoarr[i].Venue.Latitude.Replace(".", ","));
+                        if (infoarr[i].Venue.Longitude == null)
+                            lng = 0;
+                        else
+                            lng = float.Parse(infoarr[i].Venue.Longitude.Replace(".", ","));
+
+                        string markerinfo = infoarr[i].Lineup[0] + "\n" + infoarr[i].Description + "\n" + infoarr[i].Title + "\n" + infoarr[i].datetime;
+                        AddMarker(lat, lng, markerinfo);        
+                    }
+                }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Map.Markers.Clear();
+            string str = CityList.Text.ToString();
+            for  (int i = 0; i < ArtistList.Count; i++)
+            {
+                infoarr = null;
+                infoarr = ch.LoadEventInfo(ArtistList[i]);
+                CityChose(str, infoarr);
+            }
         }
     }
 }
