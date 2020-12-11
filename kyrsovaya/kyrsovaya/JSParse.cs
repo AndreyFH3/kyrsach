@@ -14,9 +14,5 @@ namespace kyrsovaya
             List<Root> inf = JsonConvert.DeserializeObject<List<Root>>(art);
             return inf;
         }
-
-        //public abstract void to"parseJSdata"();
-
-        //public abstract void должен будет передавать значения к нам кароч да, што
     }
 }

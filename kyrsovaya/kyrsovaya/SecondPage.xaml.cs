@@ -19,11 +19,7 @@ using GMap.NET.WindowsPresentation;
 using System.Device.Location;
 
 namespace kyrsovaya
-{
-    /// <summary>
-    /// Логика взаимодействия для SecondPage.xaml
-    /// </summary>
-    
+{    
     public partial class SecondPage : UserControl
     {
         public SecondPage()
@@ -59,27 +55,38 @@ namespace kyrsovaya
             float lat;
             float lng;
 
-            for (int i = 1; i < infoarr.Count();i++) 
+            for (int i = 0; i < infoarr.Count();i++) 
             {
-                lat = float.Parse((infoarr[i].Venue.Latitude).Replace(".", ","));
-                lng = float.Parse((infoarr[i].Venue.Longitude).Replace(".", ","));
-   
-                PointLatLng EventLocation = new PointLatLng(lat, lng);
-                marker = new GMapMarker(EventLocation)
-                {
+                //string str1 = infoarr[i].Venue.Latitude;
+                //string str2 = infoarr[i].Venue.Longitude;
+                if (infoarr[i].Venue.Latitude==null)
+                    lat = 0;
+                else
+                    lat = float.Parse(infoarr[i].Venue.Latitude.Replace(".", ","));
+                if (infoarr[i].Venue.Longitude==null)
+                    lng = 0;
+                else
+                    lng = float.Parse(infoarr[i].Venue.Longitude.Replace(".", ","));
 
-                    Shape = new Image
-                    {
-                        Width = 32,
-                        Height = 32,
-                        //ToolTip = title,
-                        Source = new BitmapImage(new Uri("pack://application:,,,/imag/metka.png"))
-                    }
-
-                };
-                Map.Markers.Add(marker);
+                string markerinfo = infoarr[i].Lineup[0] + "\n" + infoarr[i].Description + "\n" + infoarr[i].Title + "\n" + infoarr[i].datetime;
+                AddMarker(lat, lng, markerinfo);
             }
 
+        }
+        void AddMarker(float lat, float lng, string tooltip)
+        {
+            PointLatLng EventLocation = new PointLatLng(lat, lng);
+            marker = new GMapMarker(EventLocation)
+            {
+                Shape = new Image
+                {
+                    Width = 32,
+                    Height = 32,
+                    ToolTip = tooltip,
+                    Source = new BitmapImage(new Uri("pack://application:,,,/imag/metka.png"))
+                }
+            };
+            Map.Markers.Add(marker);
         }
     }
 }
