@@ -13,5 +13,6 @@
         <ComboBox x:Name="CityList" Width="150" Height="26" Margin="590,90,10,334" ItemsSource="{Binding names}" IsEditable="True"></ComboBox>
         <Button Content="Поиск" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" HorizontalAlignment="Right" Margin="0,53,10,0" VerticalAlignment="Top" d:LayoutOverrides="Height" Click="Button_Click" />
         <Button Content="Button" HorizontalAlignment="Left" Margin="590,135,0,0" VerticalAlignment="Top" Width="150" Height="26" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD000000" Click="Button_Click_1"/>
+        <ListBox x:Name="OnlineList" HorizontalAlignment="Left" Height="261" Margin="590,179,0,0" VerticalAlignment="Top" Width="150"/>
     </Grid>
 </UserControl>
