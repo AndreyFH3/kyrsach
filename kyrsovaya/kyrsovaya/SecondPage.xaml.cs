@@ -62,7 +62,7 @@ namespace kyrsovaya
 
             OnlineList.Items.Clear();
             
-            for (int i = 0; i < infoarr.Count();i++)
+            for (int i = 0; i < infoarr.Count() ;i++)
             {
                 string markerinfo = infoarr[i].Lineup[0] + "\n" + infoarr[i].Description + "\n" + infoarr[i].Title + "\n" + infoarr[i].datetime;
                 if (infoarr[i].Venue.Latitude == null && infoarr[i].Venue.Longitude == null)
@@ -82,6 +82,7 @@ namespace kyrsovaya
                 }
              }
         }
+
         void AddMarker(float lat, float lng, string tooltip)
         {
             PointLatLng EventLocation = new PointLatLng(lat, lng);
@@ -100,28 +101,26 @@ namespace kyrsovaya
         
         void CityChose(string city, List<Root> list)
         {
-            for (int i  = 0; i < list.Count(); i++)
-                if (list[i].Venue.Country == city)
+            for (int j  = 0; j < list.Count(); j++)
+                if (list[j].Venue.Country == city)
                 {
-                    for (int j = 0; j < list.Count(); j++)
+                    string markerinfo = list[j].Lineup[0] + "\n" + list[j].Description + "\n" + list[j].Title + "\n" + list[j].datetime;
+                    if (list[j].Venue.Latitude == null && list[j].Venue.Longitude == null)
                     {
-                        string markerinfo = list[i].Lineup[0] + "\n" + list[i].Description + "\n" + list[i].Title + "\n" + list[i].datetime;
-                        if (list[i].Venue.Latitude == null && list[i].Venue.Longitude == null)
-                        {
-                            ListBoxItem OnlineEventinfo = new ListBoxItem()
-                            {
-                                Content = infoarr[i].Lineup[0],
-                                ToolTip = markerinfo
-                            };
-                            OnlineList.Items.Add(OnlineEventinfo);
-                        }
-                        else
-                        {
-                            lng = float.Parse(list[i].Venue.Longitude.Replace(".", ","));
-                            lat = float.Parse(list[i].Venue.Latitude.Replace(".", ","));
-                            AddMarker(lat, lng, markerinfo);
-                        }
+                        //ListBoxItem OnlineEventinfo = new ListBoxItem()
+                        //{
+                        //     Content = infoarr[j].Lineup[0],
+                        //     ToolTip = markerinfo
+                        //};
+                        //OnlineList.Items.Add(OnlineEventinfo);
                     }
+                    else
+                    {
+                        lng = float.Parse(list[j].Venue.Longitude.Replace(".", ","));
+                        lat = float.Parse(list[j].Venue.Latitude.Replace(".", ","));
+                        AddMarker(lat, lng, markerinfo);
+                    }
+                    
                 }
         }
 
@@ -131,11 +130,7 @@ namespace kyrsovaya
             Map.Markers.Clear();
             string str = CityList.Text.ToString();
             for  (int i = 0; i < ArtistList.Count; i++)
-            {
-                infoarr = null;
-                infoarr = ch.LoadEventInfo(ArtistList[i]);
-                CityChose(str, infoarr);
-            }
+                CityChose(str, ch.LoadEventInfo(ArtistList[i]));
         }
     }
 }
