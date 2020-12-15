@@ -62,7 +62,7 @@ namespace kyrsovaya
 
             OnlineList.Items.Clear();
             
-            for (int i = 0; i < infoarr.Count() ;i++)
+            for (int i = 0; i < infoarr.Count();i++)
             {
                 string markerinfo = infoarr[i].Lineup[0] + "\n" + infoarr[i].Description + "\n" + infoarr[i].Title + "\n" + infoarr[i].datetime;
                 if (infoarr[i].Venue.Latitude == null && infoarr[i].Venue.Longitude == null)
@@ -82,7 +82,6 @@ namespace kyrsovaya
                 }
              }
         }
-
         void AddMarker(float lat, float lng, string tooltip)
         {
             PointLatLng EventLocation = new PointLatLng(lat, lng);
@@ -101,28 +100,28 @@ namespace kyrsovaya
         
         void CityChose(string city, List<Root> list)
         {
-            if (list == null)
-                return;
-            for (int j  = 0; j < list.Count(); j++)
-                if (list[j].Venue.Country == city)
+            for (int i  = 0; i < list.Count(); i++)
+                if (list[i].Venue.Country == city)
                 {
-                    string markerinfo = list[j].Lineup[0] + "\n" + list[j].Description + "\n" + list[j].Title + "\n" + list[j].datetime;
-                    if (list[j].Venue.Latitude == null && list[j].Venue.Longitude == null)
-                    {
-                        //ListBoxItem OnlineEventinfo = new ListBoxItem()
-                        //{
-                        //     Content = infoarr[j].Lineup[0],
-                        //     ToolTip = markerinfo
-                        //};
-                        //OnlineList.Items.Add(OnlineEventinfo);
-                    }
-                    else
-                    {
-                        lng = float.Parse(list[j].Venue.Longitude.Replace(".", ","));
-                        lat = float.Parse(list[j].Venue.Latitude.Replace(".", ","));
-                        AddMarker(lat, lng, markerinfo);
-                    }
                     
+                    {
+                        string markerinfo = list[i].Lineup[0] + "\n" + list[i].Description + "\n" + list[i].Title + "\n" + list[i].datetime;
+                        if (list[i].Venue.Latitude == null && list[i].Venue.Longitude == null)
+                        {
+                            ListBoxItem OnlineEventinfo = new ListBoxItem()
+                            {
+                                Content = infoarr[i].Lineup[0],
+                                ToolTip = markerinfo
+                            };
+                            OnlineList.Items.Add(OnlineEventinfo);
+                        }
+                        else
+                        {
+                            lng = float.Parse(list[i].Venue.Longitude.Replace(".", ","));
+                            lat = float.Parse(list[i].Venue.Latitude.Replace(".", ","));
+                            AddMarker(lat, lng, markerinfo);
+                        }
+                    }
                 }
         }
 
@@ -132,53 +131,94 @@ namespace kyrsovaya
             Map.Markers.Clear();
             string str = CityList.Text.ToString();
             for  (int i = 0; i < ArtistList.Count; i++)
-                CityChose(str, ch.LoadEventInfo(ArtistList[i]));
+            {
+                infoarr = null;
+                infoarr = ch.LoadEventInfo(ArtistList[i]);
+                CityChose(str, infoarr);
+            }
         }
 
         private void DateSort(object sender, RoutedEventArgs e)
         {
-            CityList.Margin = new Thickness(1000, 0, 0, 0);
-            btnCountry.Margin = new Thickness(1000, 10, 0, 0);
+            CityList.Margin = new Thickness(1000, 40, 0, 0);
+            btnCountry.Margin = new Thickness(1000, 40, 0, 0);
 
-            OnlineList.Margin = new Thickness(1000, 0, 0, 0);
-            btnArtist.Margin = new Thickness(1000, 10, 0, 0);
+            OnlineList.Margin = new Thickness(509, 160, 0, 0);
+            btnArtist.Margin = new Thickness(1000, 40, 0, 0);
             Search.Margin = new Thickness(1000, 40, 0, 0);
 
+
+            btnDateSort.Margin = new Thickness(0, 0, 10, 287);
+            dt1.Margin = new Thickness(0, 76, 70, 0);
+            dt2.Margin = new Thickness(0, 101, 70, 0);
+        }
+
+        private void CountrySort(object sender, RoutedEventArgs e)
+        {
+            CityList.Margin = new Thickness(538, 88, 10, 0);
+            btnCountry.Margin = new Thickness(500, 125, 0, 0);
+
+            OnlineList.Margin = new Thickness(1000, 40, 0, 0);
+            btnArtist.Margin = new Thickness(1000, 40, 0, 0);
+            Search.Margin = new Thickness(1000, 40, 0, 0);
 
             btnDateSort.Margin = new Thickness(0, 0, 10.4, 9.6);
             dt1.Margin = new Thickness(1100, 0, 0, 0);
             dt2.Margin = new Thickness(1100, 0, 0, 0);
         }
 
-        private void CountrySort(object sender, RoutedEventArgs e)
+        private void ArtistAFind(object sender, RoutedEventArgs e)
         {
-            CityList.Margin = new Thickness(500, 76, 10.4, 0);
-            btnCountry.Margin = new Thickness(500, 120, 0, 0);
+            CityList.Margin = new Thickness(1000, 40, 0, 0);
+            btnCountry.Margin = new Thickness(1000, 40, 0, 0);
 
-            OnlineList.Margin = new Thickness(1000, 0, 0, 0);
-            btnArtist.Margin = new Thickness(1000, 10, 0, 0);
-            Search.Margin = new Thickness(1000, 40, 0, 0);
+            OnlineList.Margin = new Thickness(508, 160, 0, 0);
+            btnArtist.Margin = new Thickness(0, 121, 10, 295);
+            Search.Margin = new Thickness(508, 78, 0, 0);
 
-            
-            btnDateSort.Margin = new Thickness(1100, 0, 0, 0);
+
+            btnDateSort.Margin = new Thickness(1000, 40, 0, 0);
             dt1.Margin = new Thickness(1100, 0, 0, 0);
             dt2.Margin = new Thickness(1100, 0, 0, 0);
         }
 
-        private void ArtistAFind(object sender, RoutedEventArgs e)
+        void SortDate (DateTime from, DateTime to, List<Root> list)
         {
-            CityList.Margin = new Thickness(1000, 100, 0, 0);
-            btnCountry.Margin = new Thickness(1000, 100, 0, 0);
+            for (int i = 0; i < list.Count(); i++)
 
-            OnlineList.Margin = new Thickness(509, 160, 0, -0.4);
-            btnArtist.Margin = new Thickness(0, 123, 0.4, 0);
-            Search.Margin = new Thickness(509, 79, 0, 0);
-
-            
-            btnDateSort.Margin = new Thickness(1100, 0, 0, 0);
-            dt1.Margin = new Thickness(0,81,150.4,0);
-            dt2.Margin = new Thickness(0, 119, 150.4, 0);
-            
+            {
+                DateTime eventtime = list[i].datetime.DateTime;
+                if (from <= eventtime && eventtime <= to)
+                {
+                    string markerinfo = list[i].Lineup[0] + "\n" + list[i].Description + "\n" + list[i].Title + "\n" + list[i].datetime;
+                        if (list[i].Venue.Latitude == null && list[i].Venue.Longitude == null)
+                        {
+                            ListBoxItem OnlineEventinfo = new ListBoxItem()
+                            {
+                                Content = infoarr[i].Lineup[0],
+                                ToolTip = markerinfo
+                            };
+                            OnlineList.Items.Add(OnlineEventinfo);
+                        }
+                        else
+                        {
+                            lng = float.Parse(list[i].Venue.Longitude.Replace(".", ","));
+                            lat = float.Parse(list[i].Venue.Latitude.Replace(".", ","));
+                            AddMarker(lat, lng, markerinfo);
+                        }
+                    }
+                }
+        }
+        private void btnDateSort_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime From = dt1.SelectedDate.Value;
+            DateTime To = dt2.SelectedDate.Value;
+            for (int i = 0; i < ArtistList.Count; i++)
+            {
+                infoarr = null;
+                infoarr = ch.LoadEventInfo(ArtistList[i]);
+                SortDate(From, To, infoarr);
+            }
         }
     }
 }
