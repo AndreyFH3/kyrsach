@@ -101,6 +101,8 @@ namespace kyrsovaya
         
         void CityChose(string city, List<Root> list)
         {
+            if (list == null)
+                return;
             for (int j  = 0; j < list.Count(); j++)
                 if (list[j].Venue.Country == city)
                 {
@@ -131,6 +133,52 @@ namespace kyrsovaya
             string str = CityList.Text.ToString();
             for  (int i = 0; i < ArtistList.Count; i++)
                 CityChose(str, ch.LoadEventInfo(ArtistList[i]));
+        }
+
+        private void DateSort(object sender, RoutedEventArgs e)
+        {
+            CityList.Margin = new Thickness(1000, 0, 0, 0);
+            btnCountry.Margin = new Thickness(1000, 10, 0, 0);
+
+            OnlineList.Margin = new Thickness(1000, 0, 0, 0);
+            btnArtist.Margin = new Thickness(1000, 10, 0, 0);
+            Search.Margin = new Thickness(1000, 40, 0, 0);
+
+
+            btnDateSort.Margin = new Thickness(0, 0, 10.4, 9.6);
+            dt1.Margin = new Thickness(1100, 0, 0, 0);
+            dt2.Margin = new Thickness(1100, 0, 0, 0);
+        }
+
+        private void CountrySort(object sender, RoutedEventArgs e)
+        {
+            CityList.Margin = new Thickness(500, 76, 10.4, 0);
+            btnCountry.Margin = new Thickness(500, 120, 0, 0);
+
+            OnlineList.Margin = new Thickness(1000, 0, 0, 0);
+            btnArtist.Margin = new Thickness(1000, 10, 0, 0);
+            Search.Margin = new Thickness(1000, 40, 0, 0);
+
+            
+            btnDateSort.Margin = new Thickness(1100, 0, 0, 0);
+            dt1.Margin = new Thickness(1100, 0, 0, 0);
+            dt2.Margin = new Thickness(1100, 0, 0, 0);
+        }
+
+        private void ArtistAFind(object sender, RoutedEventArgs e)
+        {
+            CityList.Margin = new Thickness(1000, 100, 0, 0);
+            btnCountry.Margin = new Thickness(1000, 100, 0, 0);
+
+            OnlineList.Margin = new Thickness(509, 160, 0, -0.4);
+            btnArtist.Margin = new Thickness(0, 123, 0.4, 0);
+            Search.Margin = new Thickness(509, 79, 0, 0);
+
+            
+            btnDateSort.Margin = new Thickness(1100, 0, 0, 0);
+            dt1.Margin = new Thickness(0,81,150.4,0);
+            dt2.Margin = new Thickness(0, 119, 150.4, 0);
+            
         }
     }
 }
