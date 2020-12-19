@@ -4,6 +4,7 @@ using RestSharp;
 using System;
 using System.Globalization;
 using Newtonsoft.Json.Converters;
+using System.Threading;
 
 namespace kyrsovaya
 {
@@ -22,7 +23,7 @@ namespace kyrsovaya
             client.Timeout = -1;
         }
 
-        public List<Root> LoadEventInfo(string artname = "Grandson")
+        public  List<Root> LoadEventInfo(string artname = "Grandson")
         {
             string Uri = string.Format(param2, artname);
             var request = new RestRequest(Uri, Method.GET);

@@ -22,8 +22,8 @@
         </Grid>
 
         <Grid x:Name="DateGrid">
-            <DatePicker x:Name="dt1" HorizontalAlignment="Right" Margin="0,81,-200,0" VerticalAlignment="Top" Width="140" Height="21"/>
-            <DatePicker x:Name="dt2" HorizontalAlignment="Right" Margin="0,119,-200,0" VerticalAlignment="Top" Width="140"/>
+            <DatePicker x:Name="dt1" HorizontalAlignment="Right" Margin="0,81,-200,0" VerticalAlignment="Top" Width="140" Height="21" DisplayDateEnd="2022-12-19" DisplayDateStart="2020-12-19" Text="19.12.2020"/>
+            <DatePicker x:Name="dt2" HorizontalAlignment="Right" Margin="0,119,-200,0" VerticalAlignment="Top" Width="140" DisplayDate="2020-12-19" DisplayDateEnd="2021-12-19" DisplayDateStart="2020-12-19" Text="19.12.2021"/>
             <Button x:Name="btnDateSort" Content="Поиск по дате" HorizontalAlignment="Right" Margin="0,0,-528,10" VerticalAlignment="Bottom" Width="208" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD000000" Click="btnDateSort_Click"/>
         </Grid>
         <WindowsPresentation:GMapControl x:Name="Map" Loaded="MapLoaded" HorizontalAlignment="Left" Height="430" Margin="10,10,0,0" VerticalAlignment="Top" Width="485"/>

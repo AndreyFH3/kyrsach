@@ -17,6 +17,7 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsPresentation;
 using System.Device.Location;
+using System.Threading;
 
 namespace kyrsovaya
 {    
@@ -56,46 +57,56 @@ namespace kyrsovaya
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            infoarr = ch.LoadEventInfo(Search.Text);
 
             Map.Markers.Clear();
-
+            string find = Search.Text;
             OnlineList.Items.Clear();
-            
-            for (int i = 0; i < infoarr.Count();i++)
+            new Thread(() => 
             {
-                string markerinfo = infoarr[i].Lineup[0] + "\n" + infoarr[i].Description + "\n" + infoarr[i].Title + "\n" + infoarr[i].datetime;
-                if (infoarr[i].Venue.Latitude == null && infoarr[i].Venue.Longitude == null)
+                infoarr = ch.LoadEventInfo(find);
+                for (int i = 0; i < infoarr.Count(); i++)
                 {
-                    ListBoxItem OnlineEventinfo = new ListBoxItem() 
+                    string markerinfo = infoarr[i].Lineup[0] + "\n" + infoarr[i].Description + "\n" + infoarr[i].Title + "\n" + infoarr[i].datetime;
+                    if (infoarr[i].Venue.Latitude == null && infoarr[i].Venue.Longitude == null)
                     {
-                    Content = infoarr[i].Lineup[0],
-                    ToolTip = markerinfo
-                    };
-                    OnlineList.Items.Add(OnlineEventinfo);
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            ListBoxItem OnlineEventinfo = new ListBoxItem()
+                            {
+                                Content = infoarr[i].Lineup[0],
+                                ToolTip = markerinfo
+                            };
+                            OnlineList.Items.Add(OnlineEventinfo);
+                        });
+                    }
+                    else
+                    {
+                        lng = float.Parse(infoarr[i].Venue.Longitude.Replace(".", ","));
+                        lat = float.Parse(infoarr[i].Venue.Latitude.Replace(".", ","));
+                        AddMarker(lat, lng, markerinfo);
+                    }
                 }
-                else
-                {
-                    lng = float.Parse(infoarr[i].Venue.Longitude.Replace(".", ","));
-                    lat = float.Parse(infoarr[i].Venue.Latitude.Replace(".", ","));
-                    AddMarker(lat, lng, markerinfo);             
-                }
-             }
+            }).Start();
+
+            
         }
         void AddMarker(float lat, float lng, string tooltip)
         {
             PointLatLng EventLocation = new PointLatLng(lat, lng);
-            marker = new GMapMarker(EventLocation)
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                Shape = new Image
+                marker = new GMapMarker(EventLocation)
                 {
-                    Width = 32,
-                    Height = 32,
-                    ToolTip = tooltip,
-                    Source = new BitmapImage(new Uri("pack://application:,,,/imag/metka.png"))
-                }
-            };
-            Map.Markers.Add(marker);
+                    Shape = new Image
+                    {
+                        Width = 32,
+                        Height = 32,
+                        ToolTip = tooltip,
+                        Source = new BitmapImage(new Uri("pack://application:,,,/imag/metka.png"))
+                    }
+                };
+                Map.Markers.Add(marker);
+            });
         }
         
         void CityChose(string city, List<Root> list)
@@ -108,12 +119,6 @@ namespace kyrsovaya
                         string markerinfo = list[i].Lineup[0] + "\n" + list[i].Description + "\n" + list[i].Title + "\n" + list[i].datetime;
                         if (list[i].Venue.Latitude == null && list[i].Venue.Longitude == null)
                         {
-                            ListBoxItem OnlineEventinfo = new ListBoxItem()
-                            {
-                                Content = infoarr[i].Lineup[0],
-                                ToolTip = markerinfo
-                            };
-                            OnlineList.Items.Add(OnlineEventinfo);
                         }
                         else
                         {
@@ -130,14 +135,70 @@ namespace kyrsovaya
             OnlineList.Items.Clear();
             Map.Markers.Clear();
             string str = CityList.Text.ToString();
-            for  (int i = 0; i < ArtistList.Count; i++)
+            new Thread(() =>
             {
-                infoarr = null;
-                infoarr = ch.LoadEventInfo(ArtistList[i]);
-                CityChose(str, infoarr);
-            }
+                for (int i = 0; i < ArtistList.Count; i++)
+                {
+                    infoarr = null;
+                    infoarr = ch.LoadEventInfo(ArtistList[i]);
+                    CityChose(str, infoarr);
+                }
+            }).Start();
         }
 
+        
+
+        void SortDate (DateTime from, DateTime to, List<Root> list)
+        {
+            if (list == null)
+                return;
+            for (int i = 0; i < list.Count(); i++)
+
+            {
+                DateTime eventtime = list[i].datetime.DateTime;
+                if (from <= eventtime && eventtime <= to)
+                {
+                    string markerinfo = list[i].Lineup[0] + "\n" + list[i].Description + "\n" + list[i].Title + "\n" + list[i].datetime;
+                        if (list[i].Venue.Latitude == null && list[i].Venue.Longitude == null)
+                        {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            ListBoxItem OnlineEventinfo = new ListBoxItem()
+                            {
+                                Content = infoarr[i].Lineup[0],
+                                ToolTip = markerinfo
+                            };
+                            OnlineList.Items.Add(OnlineEventinfo);
+                        });
+                        }
+                        else
+                        {
+                            lng = float.Parse(list[i].Venue.Longitude.Replace(".", ","));
+                            lat = float.Parse(list[i].Venue.Latitude.Replace(".", ","));
+                            AddMarker(lat, lng, markerinfo);
+                        }
+                    }
+                }
+        }
+        private void btnDateSort_Click(object sender, RoutedEventArgs e)
+        {
+            OnlineList.Items.Clear();
+            Map.Markers.Clear();
+            DateTime From = dt1.SelectedDate.Value;
+            DateTime To = dt2.SelectedDate.Value;
+            new Thread(() =>
+            {
+                for (int i = 0; i < ArtistList.Count + 1; i++)
+                {
+                    if (i >= ArtistList.Count)
+                        return;
+                    infoarr = null;
+                    infoarr = ch.LoadEventInfo(ArtistList[i]);
+                    SortDate(From, To, infoarr);
+                }
+            }).Start();
+
+        }
         private void DateSort(object sender, RoutedEventArgs e)
         {
             CityList.Margin = new Thickness(1000, 40, 0, 0);
@@ -180,45 +241,6 @@ namespace kyrsovaya
             btnDateSort.Margin = new Thickness(1000, 40, 0, 0);
             dt1.Margin = new Thickness(1100, 0, 0, 0);
             dt2.Margin = new Thickness(1100, 0, 0, 0);
-        }
-
-        void SortDate (DateTime from, DateTime to, List<Root> list)
-        {
-            for (int i = 0; i < list.Count(); i++)
-
-            {
-                DateTime eventtime = list[i].datetime.DateTime;
-                if (from <= eventtime && eventtime <= to)
-                {
-                    string markerinfo = list[i].Lineup[0] + "\n" + list[i].Description + "\n" + list[i].Title + "\n" + list[i].datetime;
-                        if (list[i].Venue.Latitude == null && list[i].Venue.Longitude == null)
-                        {
-                            ListBoxItem OnlineEventinfo = new ListBoxItem()
-                            {
-                                Content = infoarr[i].Lineup[0],
-                                ToolTip = markerinfo
-                            };
-                            OnlineList.Items.Add(OnlineEventinfo);
-                        }
-                        else
-                        {
-                            lng = float.Parse(list[i].Venue.Longitude.Replace(".", ","));
-                            lat = float.Parse(list[i].Venue.Latitude.Replace(".", ","));
-                            AddMarker(lat, lng, markerinfo);
-                        }
-                    }
-                }
-        }
-        private void btnDateSort_Click(object sender, RoutedEventArgs e)
-        {
-            DateTime From = dt1.SelectedDate.Value;
-            DateTime To = dt2.SelectedDate.Value;
-            for (int i = 0; i < ArtistList.Count; i++)
-            {
-                infoarr = null;
-                infoarr = ch.LoadEventInfo(ArtistList[i]);
-                SortDate(From, To, infoarr);
-            }
         }
     }
 }
