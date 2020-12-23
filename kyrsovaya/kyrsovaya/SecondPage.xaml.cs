@@ -57,7 +57,6 @@ namespace kyrsovaya
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             Map.Markers.Clear();
             string find = Search.Text;
             OnlineList.Items.Clear();
@@ -93,14 +92,14 @@ namespace kyrsovaya
         void AddMarker(float lat, float lng, string tooltip)
         {
             PointLatLng EventLocation = new PointLatLng(lat, lng);
-            Application.Current.Dispatcher.Invoke(() =>
+            Application.Current.Dispatcher.Invoke(() => 
             {
                 marker = new GMapMarker(EventLocation)
                 {
                     Shape = new Image
                     {
-                        Width = 32,
-                        Height = 32,
+                        Width = 40,
+                        Height = 40,
                         ToolTip = tooltip,
                         Source = new BitmapImage(new Uri("pack://application:,,,/imag/metka.png"))
                     }
@@ -151,7 +150,7 @@ namespace kyrsovaya
         void SortDate (DateTime from, DateTime to, List<Root> list)
         {
             if (list == null)
-                return;
+            return;
             for (int i = 0; i < list.Count(); i++)
 
             {
@@ -177,8 +176,8 @@ namespace kyrsovaya
                             lat = float.Parse(list[i].Venue.Latitude.Replace(".", ","));
                             AddMarker(lat, lng, markerinfo);
                         }
-                    }
                 }
+            }
         }
         private void btnDateSort_Click(object sender, RoutedEventArgs e)
         {

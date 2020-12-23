@@ -80,6 +80,7 @@
     <Compile Include="bit.cs" />
     <Compile Include="JSClasses.cs" />
     <Compile Include="JSParse.cs" />
+    <Compile Include="mapper.cs" />
     <Compile Include="SecondPage.xaml.cs">
       <DependentUpon>SecondPage.xaml</DependentUpon>
     </Compile>
