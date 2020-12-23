@@ -20,7 +20,7 @@ using System.Device.Location;
 using System.Threading;
 
 namespace kyrsovaya
-{    
+{
     public partial class SecondPage : UserControl
     {
         public string[] names { get; set; }
@@ -28,15 +28,19 @@ namespace kyrsovaya
         {
             InitializeComponent();
 
-            names = new string[] {"United States","Estonia", "Germany", "Czechia", "United Kingdom", "Australia"};
+            names = new string[] { "United States", "Estonia", "Germany", "Czechia", "United Kingdom", "Australia" };
 
             DataContext = this;
+
         }
+
         List<Root> infoarr = new List<Root>();
-        List<string> ArtistList = new List<string>()  { "Grandson", "Gorilazz", "Scorpions", "Би 2", "Justin Bieber", "Death Angel", "Tech N9ne", "Wiz Khalifa", "G-Eazy", "Diplo", "Major Lazer", "Jojo", "Avatar", "Lauv", "Black Pink", "Popa Chubby", "Primus", "Kb", "Default", "Tennis", "Emery", "CKY"};
-        GMapMarker marker;
-        float lat;
-        float lng;
+        List<string> ArtistList = new List<string>() { "Grandson", "Gorilazz", "Scorpions", "Би 2", "Justin Bieber", "Death Angel", "Tech N9ne", "Wiz Khalifa", "G-Eazy", "Diplo", "Major Lazer", "Jojo", "Avatar", "Lauv", "Black Pink", "Popa Chubby", "Primus", "Kb", "Default", "Tennis", "Emery", "CKY" };
+
+        public GMapMarker marker;
+
+        bit ch = new bit();
+        mapper MapElements = null;
 
         private void MapLoaded(object sender, RoutedEventArgs e)
         {
@@ -51,82 +55,24 @@ namespace kyrsovaya
             Map.MouseWheelZoomType = MouseWheelZoomType.MousePositionAndCenter;
             Map.CanDragMap = true;
             Map.DragButton = MouseButton.Left;
+            MapElements = new mapper(Map, marker, OnlineList);
         }
-
-        bit ch = new bit();
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             Map.Markers.Clear();
             string find = Search.Text;
             OnlineList.Items.Clear();
-            new Thread(() => 
+            new Thread(() =>
             {
                 infoarr = ch.LoadEventInfo(find);
-                for (int i = 0; i < infoarr.Count(); i++)
+                for (int i = 0; i < infoarr.Count; i++)
                 {
-                    string markerinfo = infoarr[i].Lineup[0] + "\n" + infoarr[i].Description + "\n" + infoarr[i].Title + "\n" + infoarr[i].datetime;
-                    if (infoarr[i].Venue.Latitude == null && infoarr[i].Venue.Longitude == null)
-                    {
-                        Application.Current.Dispatcher.Invoke(() =>
-                        {
-                            ListBoxItem OnlineEventinfo = new ListBoxItem()
-                            {
-                                Content = infoarr[i].Lineup[0],
-                                ToolTip = markerinfo
-                            };
-                            OnlineList.Items.Add(OnlineEventinfo);
-                        });
-                    }
-                    else
-                    {
-                        lng = float.Parse(infoarr[i].Venue.Longitude.Replace(".", ","));
-                        lat = float.Parse(infoarr[i].Venue.Latitude.Replace(".", ","));
-                        AddMarker(lat, lng, markerinfo);
-                    }
+                    MapElements.Chooser(infoarr[i]);
+                    MapElements.lbret(infoarr[i]);
                 }
             }).Start();
-
-            
-        }
-        void AddMarker(float lat, float lng, string tooltip)
-        {
-            PointLatLng EventLocation = new PointLatLng(lat, lng);
-            Application.Current.Dispatcher.Invoke(() => 
-            {
-                marker = new GMapMarker(EventLocation)
-                {
-                    Shape = new Image
-                    {
-                        Width = 40,
-                        Height = 40,
-                        ToolTip = tooltip,
-                        Source = new BitmapImage(new Uri("pack://application:,,,/imag/metka.png"))
-                    }
-                };
-                Map.Markers.Add(marker);
-            });
-        }
-        
-        void CityChose(string city, List<Root> list)
-        {
-            for (int i  = 0; i < list.Count(); i++)
-                if (list[i].Venue.Country == city)
-                {
-                    
-                    {
-                        string markerinfo = list[i].Lineup[0] + "\n" + list[i].Description + "\n" + list[i].Title + "\n" + list[i].datetime;
-                        if (list[i].Venue.Latitude == null && list[i].Venue.Longitude == null)
-                        {
-                        }
-                        else
-                        {
-                            lng = float.Parse(list[i].Venue.Longitude.Replace(".", ","));
-                            lat = float.Parse(list[i].Venue.Latitude.Replace(".", ","));
-                            AddMarker(lat, lng, markerinfo);
-                        }
-                    }
-                }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -138,47 +84,14 @@ namespace kyrsovaya
             {
                 for (int i = 0; i < ArtistList.Count; i++)
                 {
-                    infoarr = null;
                     infoarr = ch.LoadEventInfo(ArtistList[i]);
-                    CityChose(str, infoarr);
+                    for (int j = 0; j < infoarr.Count; j++)
+                        if (str == infoarr[j].Venue.Country)
+                            MapElements.Chooser(infoarr[j]);
                 }
             }).Start();
         }
 
-        
-
-        void SortDate (DateTime from, DateTime to, List<Root> list)
-        {
-            if (list == null)
-            return;
-            for (int i = 0; i < list.Count(); i++)
-
-            {
-                DateTime eventtime = list[i].datetime.DateTime;
-                if (from <= eventtime && eventtime <= to)
-                {
-                    string markerinfo = list[i].Lineup[0] + "\n" + list[i].Description + "\n" + list[i].Title + "\n" + list[i].datetime;
-                        if (list[i].Venue.Latitude == null && list[i].Venue.Longitude == null)
-                        {
-                        Application.Current.Dispatcher.Invoke(() =>
-                        {
-                            ListBoxItem OnlineEventinfo = new ListBoxItem()
-                            {
-                                Content = infoarr[i].Lineup[0],
-                                ToolTip = markerinfo
-                            };
-                            OnlineList.Items.Add(OnlineEventinfo);
-                        });
-                        }
-                        else
-                        {
-                            lng = float.Parse(list[i].Venue.Longitude.Replace(".", ","));
-                            lat = float.Parse(list[i].Venue.Latitude.Replace(".", ","));
-                            AddMarker(lat, lng, markerinfo);
-                        }
-                }
-            }
-        }
         private void btnDateSort_Click(object sender, RoutedEventArgs e)
         {
             OnlineList.Items.Clear();
@@ -187,13 +100,15 @@ namespace kyrsovaya
             DateTime To = dt2.SelectedDate.Value;
             new Thread(() =>
             {
-                for (int i = 0; i < ArtistList.Count + 1; i++)
+                for (int i = 0; i < ArtistList.Count; i++)
                 {
-                    if (i >= ArtistList.Count)
-                        return;
-                    infoarr = null;
                     infoarr = ch.LoadEventInfo(ArtistList[i]);
-                    SortDate(From, To, infoarr);
+                    for (int j = 0; j < infoarr.Count; j++)
+                        if (From <= infoarr[j].datetime.DateTime && infoarr[j].datetime.DateTime <= To)
+                        {
+                            MapElements.Chooser(infoarr[j]);
+                            MapElements.lbret(infoarr[j]);
+                        }
                 }
             }).Start();
 

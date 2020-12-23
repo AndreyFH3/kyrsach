@@ -75,8 +75,8 @@ namespace kyrsovaya
                 {
                     Shape = new Image
                     {
-                        Width = 32,
-                        Height = 32,
+                        Width = 40,
+                        Height = 40,
                         ToolTip = markerinfo,
                         Source = new BitmapImage(new Uri("pack://application:,,,/imag/metka.png"))
                     }
