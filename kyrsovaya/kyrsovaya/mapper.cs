@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Device.Location;
 using System.Dynamic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,68 +22,50 @@ namespace kyrsovaya
 {
     class mapper
     {
-        public mapper(GMapControl Map, GMapMarker marker, ListBox OnlineList)
+        public ListBoxItem lbret(Root infoarr)
         {
-            info = OnlineList;
-            this.gMap = Map;
-            this.marker = marker;
-        }
-        GMapControl gMap;
-        string markerinfo;
-        GMapMarker marker;
-        ListBox info;
-
-        public void Chooser(Root infoarr)
-        {
-            if (infoarr == null) return;
-            markerinfovoid(infoarr.Lineup[0], infoarr.Description, infoarr.Title, infoarr.datetime.ToString());
-            if (infoarr.Venue.Latitude == null && infoarr.Venue.Longitude == null) return;
-            else
+            return new ListBoxItem()
             {
-                float lng = float.Parse(infoarr.Venue.Longitude.Replace(".", ","));
-                float lat = float.Parse(infoarr.Venue.Latitude.Replace(".", ","));
-                AddMarker(lat, lng);
-            }
+                Content = infoarr.Lineup[0],
+                ToolTip = markerinfovoid(infoarr.Lineup[0], infoarr.Description, infoarr.Title, infoarr.datetime.ToString())
+            };
         }
-        public void lbret(Root infoarr)
+
+        public string markerinfovoid (string _1, string _2, string _3, string _4)
         {
-            Application.Current.Dispatcher.Invoke(() =>
+            return _1 + "\n" + _2 + "\n" + _3 + "\n" + _4;
+        }
+
+        public List<GMapMarker> GetMarkers(List<Root> data)
+        {
+            var res = new List<GMapMarker>();
+            
+            foreach (Root infoarr in data)
             {
                 if (infoarr.Venue.Latitude == null && infoarr.Venue.Longitude == null)
-                {
-                    markerinfovoid(infoarr.Lineup[0], infoarr.Description, infoarr.Title, infoarr.datetime.ToString());
-                    ListBoxItem OnlineEventinfo = new ListBoxItem()
-                    {
-                        Content = infoarr.Lineup[0],
-                        ToolTip = markerinfo
-                    };
-                    info.Items.Add(OnlineEventinfo);
-                }
-            });
+                    continue;
+                string info = markerinfovoid(infoarr.Lineup[0], infoarr.Description, infoarr.Title, infoarr.datetime.ToString());
+                float lng = Convert.ToSingle(infoarr.Venue.Longitude, CultureInfo.InvariantCulture);
+                float lat = Convert.ToSingle(infoarr.Venue.Latitude, CultureInfo.InvariantCulture);
+                var marker = CreatMarker(lat, lng, info);
+                res.Add(marker);
+            }
+            return res;
         }
 
-        public void markerinfovoid(string _1, string _2, string _3, string _4)
-        {
-            markerinfo = _1 + "\n" + _2 + "\n" + _3 + "\n" + _4;
-        }
-
-        void AddMarker(float lat, float lng)
+        GMapMarker CreatMarker(float lat, float lng, string info)
         {
             PointLatLng EventLocation = new PointLatLng(lat, lng);
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                marker = new GMapMarker(EventLocation)
+                return new GMapMarker(EventLocation)
                 {
                     Shape = new Image
                     {
                         Width = 40,
                         Height = 40,
-                        ToolTip = markerinfo,
+                        ToolTip = info,
                         Source = new BitmapImage(new Uri("pack://application:,,,/imag/metka.png"))
                     }
                 };
-                gMap.Markers.Add(marker);
-            });
         }
     }
 }

@@ -31,16 +31,14 @@ namespace kyrsovaya
             names = new string[] { "United States", "Estonia", "Germany", "Czechia", "United Kingdom", "Australia" };
 
             DataContext = this;
+            
 
         }
-
+        mapper MapElements = new mapper();
         List<Root> infoarr = new List<Root>();
-        List<string> ArtistList = new List<string>() { "Grandson", "Gorilazz", "Scorpions", "Би 2", "Justin Bieber", "Death Angel", "Tech N9ne", "Wiz Khalifa", "G-Eazy", "Diplo", "Major Lazer", "Jojo", "Avatar", "Lauv", "Black Pink", "Popa Chubby", "Primus", "Kb", "Default", "Tennis", "Emery", "CKY" };
-
-        public GMapMarker marker;
+        List<string> ArtistList = new List<string>() { "Grandson", "Gorilazz", "Scorpions", "Би 2", "Justin Bieber", "Death Angel", "Tech N9ne", "Wiz Khalifa", "G-Eazy",  "Major Lazer", "Jojo", "Avatar", "Lauv", "Black Pink", "Popa Chubby", "Primus", "Kb", "Default", "Tennis", "Emery", "CKY" };
 
         bit ch = new bit();
-        mapper MapElements = null;
 
         private void MapLoaded(object sender, RoutedEventArgs e)
         {
@@ -55,7 +53,6 @@ namespace kyrsovaya
             Map.MouseWheelZoomType = MouseWheelZoomType.MousePositionAndCenter;
             Map.CanDragMap = true;
             Map.DragButton = MouseButton.Left;
-            MapElements = new mapper(Map, marker, OnlineList);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -67,11 +64,17 @@ namespace kyrsovaya
             new Thread(() =>
             {
                 infoarr = ch.LoadEventInfo(find);
-                for (int i = 0; i < infoarr.Count; i++)
+                Application.Current.Dispatcher.Invoke(() =>
                 {
-                    MapElements.Chooser(infoarr[i]);
-                    MapElements.lbret(infoarr[i]);
-                }
+                    var listmarkers = MapElements.GetMarkers(infoarr);
+                    foreach (GMapMarker markers in listmarkers)
+                    {
+                        Map.Markers.Add(markers);
+                    }
+                    for (int i = 0; i < infoarr.Count; i++)
+                        if (infoarr[i].Venue.Latitude == null && infoarr[i].Venue.Longitude == null)
+                            OnlineList.Items.Add(MapElements.lbret(infoarr[i]));
+                });
             }).Start();
         }
 
@@ -82,14 +85,27 @@ namespace kyrsovaya
             string str = CityList.Text.ToString();
             new Thread(() =>
             {
-                for (int i = 0; i < ArtistList.Count; i++)
-                {
-                    infoarr = ch.LoadEventInfo(ArtistList[i]);
-                    for (int j = 0; j < infoarr.Count; j++)
-                        if (str == infoarr[j].Venue.Country)
-                            MapElements.Chooser(infoarr[j]);
+                foreach (string ls in ArtistList)
+                { 
+                    infoarr = ch.LoadEventInfo(ls);
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        for (int j = 0; j < infoarr.Count; j++)
+                        {
+                            var listmarkers = MapElements.GetMarkers(infoarr);
+                            for(int l=0;l<listmarkers.Count;l++)
+                            {
+                                if (str == infoarr[l].Venue.Country)
+                                {
+                                    Map.Markers.Add(listmarkers[l]);
+                                }
+                            }
+                        }
+                    }); 
+                    //for (int j = 0; j < infoarr.Count; j++)
+                    //       // MapElements.Chooser(infoarr[j]);
                 }
-            }).Start();
+            }).Start(); 
         }
 
         private void btnDateSort_Click(object sender, RoutedEventArgs e)
@@ -100,19 +116,29 @@ namespace kyrsovaya
             DateTime To = dt2.SelectedDate.Value;
             new Thread(() =>
             {
-                for (int i = 0; i < ArtistList.Count; i++)
+                foreach (string ls in ArtistList)
                 {
-                    infoarr = ch.LoadEventInfo(ArtistList[i]);
-                    for (int j = 0; j < infoarr.Count; j++)
-                        if (From <= infoarr[j].datetime.DateTime && infoarr[j].datetime.DateTime <= To)
+                    infoarr = ch.LoadEventInfo(ls);
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        for (int j = 0; j < infoarr.Count; j++)
                         {
-                            MapElements.Chooser(infoarr[j]);
-                            MapElements.lbret(infoarr[j]);
+                            var listmarkers = MapElements.GetMarkers(infoarr);
+                            for (int l = 0; l < listmarkers.Count; l++)
+                            {
+                                if (From <= infoarr[l].datetime.DateTime && infoarr[l].datetime.DateTime <= To)
+                                {
+                                    Map.Markers.Add(listmarkers[l]);
+                                }
+                            }
                         }
+                    });
+                    //for (int j = 0; j < infoarr.Count; j++)
+                    //       // MapElements.Chooser(infoarr[j]);
                 }
             }).Start();
 
-        }
+    }
         private void DateSort(object sender, RoutedEventArgs e)
         {
             CityList.Margin = new Thickness(1000, 40, 0, 0);
